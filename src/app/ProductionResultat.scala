@@ -14,7 +14,7 @@ object ProductionResultatIMP extends ProductionResultat {
     if (l == Nil) {
       corpspage = Tag("body", List(), List(Text("Aie! Aucun resultat trouvé :(")))
     }
-    for (i <- l) {
+    for (i <- l) { 
       var x = i._1
       var y = i._2
       corpspage = Tag("body", List(), List(

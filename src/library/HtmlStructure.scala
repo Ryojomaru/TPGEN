@@ -26,7 +26,7 @@ case class Text(content:String) extends Html
  *      </center>
  *    </body>
  *  </html>
- */
+ */ 
 
 object ExempleHtml{
   val exemple= Tag("html",List(),
