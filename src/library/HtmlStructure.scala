@@ -21,7 +21,7 @@ case class Text(content:String) extends Html
  *    </head>
  *    <body>
  *      &nbsp
- *      <center>
+ *      <center>                                                                                
  *        <a href="http://www.irisa.fr"> Lien <img> </img> </a>
  *      </center>
  *    </body>
@@ -38,4 +38,5 @@ object ExempleHtml{
                             Tag("center",List(),List(
                             		Tag("a", List(("href","http://www.irisa.fr")),	
                             				List(Text("Lien"),Tag("img",List(),List())))))))))
+
 }
