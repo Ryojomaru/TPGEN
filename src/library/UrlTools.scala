@@ -74,7 +74,7 @@ object UrlProcessor extends UrlTools{
 	   try {
 	     val rootNode = cleaner.clean(new URL(url))
 		   tag2Html(rootNode)
-	   } catch{
+	   } catch {
 	     case _:java.net.MalformedURLException => println("Malformed URL: "+url);throw TagNodeConversionException("Malformed URL")
 	     case _:java.net.UnknownServiceException => println("Unknown Service on "+url);throw TagNodeConversionException("Unknown Service")
 	     case _:java.net.ConnectException => println("Connect Exception on "+url);throw TagNodeConversionException("Connect Exception")
