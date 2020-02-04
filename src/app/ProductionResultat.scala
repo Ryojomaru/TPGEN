@@ -12,23 +12,22 @@ object ProductionResultatIMP extends ProductionResultat {
   def resultat2html(l: List[(String, String)]): Html = {
     var corpspage: Tag = Tag("body", List(), List(Text("Voici les resultats:")))
     if (l == Nil) {
-      corpspage = Tag("body", List(), List(Text("Aie! Aucun resultat trouvé :(")))
+      corpspage = Tag("p", List(), List(Text("Aie! Aucun resultat trouvé :(")))
     }
     for (i <- l) { 
       var x = i._1
       var y = i._2
-      corpspage = Tag("body", List(), List(
-        corpspage, Text(x),
+      corpspage = Tag("p", List(), List(
         Tag("center", List(), List(
-          Tag("a", List(("href", y)),
-            List(Text("Lien"), Tag("img", List(), List())))))))
+          Tag("a", List(("href", x)),
+            List(Text(y), Tag("img", List(), List())))))))
 
     }
     val prod: Html = Tag("html", List(),
       List(
         Tag("head", List(),
           List(
-            Tag("meta", List(("content", "text/html"), ("charset", "iso-8859-1")), List()),
+            Tag("meta", List(("content", "text/html"), ("charset", "UTF-8")), List()),
             Tag("title", List(), List(Text("Page de rendu"))))),
         corpspage))
 

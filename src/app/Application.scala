@@ -14,9 +14,9 @@ object Application {
      var listTuple:List[(String,String)] = Nil
        
      for (i<-l)
-        listTuple = listTuple:::AnalysePage.resultats(i,e)
+        listTuple = listTuple:::AnalysePage.resultats("https://search.vivastreet.com/annonces/fr?lb=new&search=1&start_field=1&keywords="+i,e)
      
-     Html2String.process(ProductionResultat.resultat2html(listTuple))
+     Html2String.process(ProductionResultatIMP.resultat2html(listTuple))
   }
   
   def main(args:Array[String]) { //tests
