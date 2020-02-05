@@ -1,6 +1,6 @@
 package app
 
-import library.{ExempleHtml, Word, And, Or, Expression, Html, Tag, Text, UrlProcessor}
+import library._
 
 object FiltrageHtmlPage extends library.FiltrageHtml {
     
@@ -13,6 +13,7 @@ object FiltrageHtmlPage extends library.FiltrageHtml {
     }
     
     def webPageToString(h:Html):String = h match {
+      case Tag("script",_,_) => ""
       case Tag(x,y,z::l) => webPageToString(z) + webPageToString(Tag(x,y,l))
       case Tag(x,y,Nil) => ""
       case Text(x) => x

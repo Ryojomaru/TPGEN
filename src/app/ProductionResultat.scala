@@ -1,51 +1,38 @@
 package app
+
 import library._
 
-object ProductionResultatIMP extends ProductionResultat {
-  /**
-   * A partir d’une liste de couples (titre,URL), produit un document Html, qui
-   * liste les solutions sous la forme de liens cliquables
-   * @param l la liste des couples solution (titre,URL)
-   * @return le document Html listant les solutions
-   */
+object ProductionResultat extends ProductionResultat {
+    def resultat2html(l: List[(String, String)]): Html = {
+      
+      var listResults:List[Html] = List(Text("<h1>Voici les resultats :</h1>"))
+      
+      if (l == Nil)
+        listResults = List(Text("<p>Aie! Aucun resultat trouvé :(</p>"))
+        
+      else {
+        for (i <- l) { 
+          val x = i._1
+          val y = i._2
+          
+          listResults = listResults:::List(Tag("p", List(), List(Tag("a", List(("href", x)),List(Text(y))))))
+        }
+      }
+      
+      var corpspage: Tag = Tag("body", List(), listResults)
+      
+      val prod: Html = Tag("html", List(),
+        List(
+          Tag("head", List(),
+            List(
+              Tag("meta", List(("content", "text/html"), ("charset", "UTF-8")), List()),
+              Tag("title", List(), List(Text("Page de rendu"))))),
+            //ajout le plus important du tp
+            Tag("style", List(), List(Text("body{background-image:url(\"https://images.techhive.com/images/article/2014/04/windows-xp-bliss-start-screen-100259803-orig.jpg\"); background-size:cover;}"))),
+            Tag("script", List(), List(Text("let parag=document.getElementsByTagName(\"P\"),j=50,reverse=!0;setInterval(function(){for(i=0;i<parag.length;i++)parag[i].style.fontSize=j+\"%\";!reverse&&j>50?j--:reverse&&j<200?j++:reverse=!reverse},20);"))),
+            //-----------------------------
+            corpspage))
 
-  def resultat2html(l: List[(String, String)]): Html = {
-    var corpspage: Tag = Tag("body", List(), List(Text("Voici les resultats:")))
-    if (l == Nil) {
-      corpspage = Tag("p", List(), List(Text("Aie! Aucun resultat trouvé :(")))
-    }
-    for (i <- l) { 
-      var x = i._1
-      var y = i._2
-      corpspage = Tag("p", List(), List(
-        Tag("center", List(), List(
-          Tag("a", List(("href", x)),
-            List(Text(y), Tag("img", List(), List())))))))
-
-    }
-    val prod: Html = Tag("html", List(),
-      List(
-        Tag("head", List(),
-          List(
-            Tag("meta", List(("content", "text/html"), ("charset", "UTF-8")), List()),
-            Tag("title", List(), List(Text("Page de rendu"))))),
-        corpspage))
-
-    //					println("voici la prod:   "+prod)
-    //					println("et la le corpspage   "+corpspage)
-    //
-    prod
-
+      prod
   }
-  resultat2html(("Bon", "jour") :: ("au", "revoir") :: Nil)
-
-  //    l match {
-  //
-  //      case Nil =>corpspage; Tag("body", List(), List(Text("fin de la recherche")))
-  //
-  //      case (x, y) :: m =>corpspage = Tag("body", List(), List(Text(x), Tag("center", List(), List(Tag("a", List(("href", y)),
-  //          List(Text("Lien"), Tag("img", List(), List()))))))); resultat2html(m)
-  //
-  //    }
 }
-

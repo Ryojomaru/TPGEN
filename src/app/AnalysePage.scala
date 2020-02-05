@@ -1,6 +1,6 @@
 package app
 
-import library.{ExempleHtml, Word, And, Or, Expression, Html, Tag, Text, UrlProcessor}
+import library._
 
 object AnalysePage extends library.AnalysePage {
 
@@ -30,11 +30,5 @@ object AnalysePage extends library.AnalysePage {
     }
     case Tag(x,y,z::l) => titre(z) + titre(Tag(x,y,l))
     case _ => ""
-  }
-  
-  def main(args:Array[String]) { //tests
-    val exp : Expression = Word("tundra")
-        
-    println(resultats("https://search.vivastreet.com/annonces/fr?lb=new&search=1&start_field=1&keywords=tundra",exp))
   }
 }

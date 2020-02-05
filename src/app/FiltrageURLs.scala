@@ -1,6 +1,6 @@
 package app
 
-import library.{ExempleHtml, Word, And, Or, Expression, Html, Tag, Text, UrlProcessor}
+import library._
 
 object FiltrageURLs extends library.FiltrageURLs {
   
