@@ -9,7 +9,7 @@ object AnalysePage extends library.AnalysePage {
     val page : Html = UrlProcessor.fetch(url)
     val urls : List[String] = FiltrageURLs.filtreAnnonce(page)
     var toReturn : List[(String, String)] = Nil
-
+    
     for (i <- urls){
       if(i.contains("vivastreet")) {
         val page : Html = UrlProcessor.fetch(i)

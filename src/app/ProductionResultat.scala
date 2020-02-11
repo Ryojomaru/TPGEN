@@ -29,7 +29,7 @@ object ProductionResultat extends ProductionResultat {
               Tag("title", List(), List(Text("Page de rendu"))))),
             //ajout le plus important du tp
             Tag("style", List(), List(Text("body{background-image:url(\"https://images.techhive.com/images/article/2014/04/windows-xp-bliss-start-screen-100259803-orig.jpg\"); background-size:cover;}"))),
-            Tag("script", List(), List(Text("let parag=document.getElementsByTagName(\"P\"),j=50,reverse=!0;setInterval(function(){for(i=0;i<parag.length;i++)parag[i].style.fontSize=j+\"%\";!reverse&&j>50?j--:reverse&&j<200?j++:reverse=!reverse},20);"))),
+            Tag("script", List(), List(Text("let parag=document.getElementsByTagName('P'),j=100,reverse=!0;setInterval(function(){for(i=0;i<parag.length;i++){parag[i].style.fontSize=j+'%';parag[i].style.backgroundColor='#'+(j-100)+'A'+String.fromCharCode(j-100+65)+'FE'+(j-100)}console.log(String.fromCharCode(j-100+65));!reverse&&j>100?j--:reverse&&j<105?j++:reverse=!reverse},150);"))),
             //-----------------------------
             corpspage))
 
