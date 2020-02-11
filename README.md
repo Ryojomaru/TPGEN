@@ -1,3 +1,3 @@
 # TPGEN
 
-TPGEN
+TPGEN fait en groupe
